@@ -1,25 +1,37 @@
 // Import all dependencies & middlewares here
 import express from 'express';
+import logger from 'winston';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import passport from 'passport';
 import mongoose from 'mongoose';
 
+import { config } from './store/config';
+import { applyPassportStrategy } from './store/passport';
 import { userController } from './controller';
 
 // Init an Express App.
 const app = express();
-
-// Use your dependencies here
+// Set up CORS
+app.use(cors());
+// Apply strategy to passport
+applyPassportStrategy(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // use all controllers(APIs) here
 app.use('/', userController);
-
+/**
+ * Get port from environment and store in Express
+ */
+const { port, mongoDBUri, mongoHostName } = config.env;
 // Start Server here
-app.listen(8080, () => {
-    console.log('Server is running on port 8080!');
-    mongoose.connect("mongodb://localhost/testwww").then(() => {
-        console.log('Connected to mongoDB at port 27017');
-    });
+app.listen(port, () => {
+    logger.info(`Started successfully server at port ${port}`);
+    mongoose
+        .connect(mongoDBUri, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then(() => {
+            logger.info(`Connected to mongoDB at ${mongoHostName}`);
+        });
 });
 
