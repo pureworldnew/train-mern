@@ -19,6 +19,9 @@ applyPassportStrategy(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.json({ status: true });
+})
 // use all controllers(APIs) here
 app.use('/', userController);
 /**
@@ -35,3 +38,4 @@ app.listen(port, () => {
         });
 });
 
+export default app;
