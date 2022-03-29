@@ -1,11 +1,11 @@
 export const config = {
     passport: {
-        secret: '<Add_Your_Own_Secret_Key>',
+        secret: process.env.JWT_SECRET,
         expiresIn: 10000,
     },
     env: {
-        port: 8080,
-        mongoDBUri: 'mongodb://localhost/test',
+        port: process.env.PORT,
+        mongoDBUri: process.env.MONGOdb_URL,
         mongoHostName: process.env.ENV === 'prod' ? 'mongodbAtlas' : 'localhost',
     },
 };

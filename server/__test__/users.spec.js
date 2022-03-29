@@ -1,7 +1,19 @@
 // users.spec.js
 
 import supertest from 'supertest';
-import app from '../server'
+import app from '../app';
+import mongoose from 'mongoose';
+
+
+beforeEach((done) => {
+    mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => done());
+});
+
+afterEach((done) => {
+    mongoose.connection.db.dropDatabase(() => {
+        mongoose.connection.close(() => done())
+    });
+});
 
 describe("Testing users API", () => {
     it("tests the base route and returns true for status", async () => {
@@ -11,14 +23,6 @@ describe("Testing users API", () => {
         expect(response.body.status).toBe(true);
 
     });
-
-    // it("tests the get users endpoint and have message property", async () => {
-
-    //     const response = await supertest(app).get('/movies');
-
-    //     expect(response.status).toBe(200);
-    //     expect(response.body.status).toBe('success');
-    //     expect(response.body).toHaveProperty('message');
-    // })
 });
+
 
