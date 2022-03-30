@@ -15,18 +15,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint:fix",
+      "pre-push": "npm run lint"
     }
-  },
-  "lint-staged": {
-    "*.{js,tsx}": [
-      "./node_modules/.bin/eslint --fix",
-      "git add"
-    ],
-    "*.{js, jsx, json, html, css}": [
-      "./node_modules/.bin/prettier --write",
-      "git add"
-    ]
   },
   "scripts": {
     "start": "react-scripts start",
