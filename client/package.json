@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
-    "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.1",
     "react": "^18.0.0",
@@ -21,12 +20,12 @@
   },
   "lint-staged": {
     "*.{js,tsx}": [
-        "./node_modules/.bin/eslint --fix",
-        "git add"
+      "./node_modules/.bin/eslint --fix",
+      "git add"
     ],
     "*.{js, jsx, json, html, css}": [
-        "./node_modules/.bin/prettier --write",
-        "git add"
+      "./node_modules/.bin/prettier --write",
+      "git add"
     ]
   },
   "scripts": {
@@ -57,6 +56,7 @@
   },
   "devDependencies": {
     "eslint": "^8.12.0",
-    "eslint-plugin-react": "^7.29.4"
+    "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.4"
   }
 }
