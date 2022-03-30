@@ -16,3 +16,6 @@ Install ESlint and prettier
 - npm i eslint prettier
 - npm install-peerdeps --dev eslint-config-airbnb
 - npm install --save-dev @babel/core
+
+# testing 
+- Jest, supertest library for unit testing.
