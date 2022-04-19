@@ -27,8 +27,8 @@ function login(email, password, from) {
     );
   };
 
-  function request(user) {
-    return { type: userConstants.LOGIN_REQUEST, user };
+  function request(email) {
+    return { type: userConstants.LOGIN_REQUEST, email };
   }
 
   function success(user) {

@@ -32,14 +32,14 @@ export function configureFakeBackend() {
       // route functions
 
       function authenticate() {
-        const { username, password } = body;
+        const { email, password } = body;
         const user = users.find(
-          (x) => x.username === username && x.password === password
+          (x) => x.email === email && x.password === password
         );
         if (!user) return error("Username or password is incorrect");
         return ok({
           id: user.id,
-          username: user.username,
+          email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
           token: "fake-jwt-token",

@@ -12,9 +12,10 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
 // setup fake backend
-import { configureFakeBackend } from "./helpers";
+
 import { alertActions } from "./actions";
-configureFakeBackend();
+import { Error } from "./components/AuthForm";
+
 
 function App() {
   const [authTokens, setAuthTokens] = useState();
@@ -45,7 +46,7 @@ function App() {
               <Link to="/admin">Admin Page</Link>
             </li>
           </ul>
-          {alert.message && <div>{alert.message}</div>}
+          {alert.message && <Error>{alert.message}</Error>}
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

@@ -29,7 +29,7 @@ function createUser(email, password) {
  * retrieve and display all Users in the User Model
  */
 userController.get(
-    '/', 
+    '/users/authenticate', 
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
     User.find({}, (err, result) => {
