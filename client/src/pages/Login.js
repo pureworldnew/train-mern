@@ -49,6 +49,7 @@ function Login() {
       <Form name="form" onSubmit={handleSubmit}>
         <Input
           type="email"
+          name="email"
           placeholder="email"
           value={email}
           onChange={handleChange}
@@ -56,6 +57,7 @@ function Login() {
         {submitted && !email && <Error>Email is required</Error>}
         <Input
           type="password"
+          name="password"
           placeholder="password"
           value={password}
           onChange={handleChange}

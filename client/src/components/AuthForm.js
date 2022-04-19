@@ -10,7 +10,7 @@ const Card = styled.div`
   align-items: center;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
